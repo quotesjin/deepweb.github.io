@@ -1,1 +1,0 @@
-from .update_model import add_special_tokens
