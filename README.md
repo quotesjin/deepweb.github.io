@@ -1,175 +1,91 @@
-<p align="center">
-  <a href="https://getleon.ai"><img width="96" src="https://getleon.ai/img/logo.svg"></a><br><br>
-  <a href="https://www.youtube.com/watch?v=p7GRGiicO1c"><img width="512" src="https://getleon.ai/img/1.0.0-beta.0_preview_en.png"></a><br>
-</p>
+# AI TEXT GENERATOR
 
-<h1 align="center">Leon</h1>
+# Context
 
-*<p align="center">Your open-source personal assistant.</p>*
+This project has been realized as a part of Natural Langage Processing class teached by Matthias Gallé, *Naverlabs* for the MSc AI  (CentraleSupelec 2019/2020). Project members are: 
 
-<p align="center">
-  <a href="https://github.com/leon-ai/leon/blob/develop/LICENSE.md"><img src="https://img.shields.io/badge/license-MIT-blue.svg?label=License&style=flat" /></a>
-  <a href="https://github.com/leon-ai/leon/blob/develop/.github/CONTRIBUTING.md"><img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat" /></a>
-  <br>
-  <a href="https://github.com/leon-ai/leon/actions/workflows/build.yml"><img src="https://github.com/leon-ai/leon/actions/workflows/build.yml/badge.svg?branch=develop" /></a>
-  <a href="https://github.com/leon-ai/leon/actions/workflows/tests.yml"><img src="https://github.com/leon-ai/leon/actions/workflows/tests.yml/badge.svg?branch=develop" /></a>
-  <a href="https://github.com/leon-ai/leon/actions/workflows/lint.yml"><img src="https://github.com/leon-ai/leon/actions/workflows/lint.yml/badge.svg?branch=develop" /></a>
-  <br>
-  <a href="https://discord.gg/MNQqqKg"><img src="https://svgshare.com/i/V09.svg"/></a>
-  <a href="https://twitter.com/louistiti_fr"><img src="https://img.shields.io/twitter/follow/louistiti_fr?label=Follow&style=social" /></a>
-</p>
+- Gaël de Léséleuc
+- Alexandre Duval
+- Thomas Lamson
 
-<p align="center">
-  <a href="https://getleon.ai">Website</a> ::
-  <a href="https://docs.getleon.ai">Documentation</a> ::
-  <a href="https://roadmap.getleon.ai">Roadmap</a> ::
-  <a href="https://github.com/leon-ai/leon/blob/develop/.github/CONTRIBUTING.md">Contributing</a> ::
-  <a href="https://blog.getleon.ai/the-story-behind-leon/">Story</a>
-</p>
+## Project description
 
----
+A detailed description of the project can be found in the *report* folder. The idea is to develop an automatic writing tool to help authors in their task. The final intended product is a web-service where authors can write text and ask for paragraph automatic generation based on previous text, following text, desired size/theme, a list of entities to mention in the generation as well as an optional summary of the content. More concretly, we fine-tuned an OpenAI GPT2 model on novel specific data for controllable and contextualised text generation.
 
-## 👋 Introduction
+# Setup
 
-**Leon** is an **open-source personal assistant** who can live **on your server**.
+You can either install the project to simply use it and have fun with text generation, or you can dive deeper and install it for training.
 
-He **does stuff** when you **ask him for**.
+## For generation only
 
-You can **talk to him** and he can **talk to you**.
-You can also **text him** and he can also **text you**.
-If you want to, Leon can communicate with you by being **offline to protect your privacy**.
+A frontend interface is available at http://textgen.thomas-lamson.com/, but there is no backend running behind it (for cost reasons). However, you can easily run the model yourself locally and use the frontend to interact with it! Here are the steps to do so:
 
-### Why?
-
-> 1. If you are a developer (or not), you may want to build many things that could help in your daily life.
-> Instead of building a dedicated project for each of those ideas, Leon can help you with his
-> packages/modules (skills) structure.
-> 2. With this generic structure, everyone can create their own modules and share them with others.
-> Therefore there is only one core (to rule them all).
-> 3. Leon uses AI concepts, which is cool.
-> 4. Privacy matters, you can configure Leon to talk with him offline. You can already text with him without any third party services.
-> 5. Open source is great.
-
-### What is this repository for?
-
-> This repository contains the following nodes of Leon:
-> - The server
-> - The packages/modules
-> - The web app
-> - The hotword node
-
-### What is Leon able to do?
-
-> Today, the most interesting part is about his core and the way he can scale up. He is pretty young but can easily scale to have new features (packages/modules).
-> You can find what he is able to do by browsing the [packages list](https://github.com/leon-ai/leon/tree/develop/packages).
-
-Sounds good for you? Then let's get started!
-
-## ☁️ Try with a Single-Click
-
-Gitpod will automatically setup an environment and run an instance for you.
-
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/leon-ai/leon)
-
-## 🚀 Getting Started
-
-### Prerequisites
-
-- [Node.js](https://nodejs.org/) >= 14
-- [npm](https://npmjs.com/) >= 5
-- [Python](https://www.python.org/downloads/) >= 3
-- [Pipenv](https://docs.pipenv.org) >= 2020.11.15
-- Supported OSes: Linux, macOS and Windows
-
-To install these prerequisites, you can follow the [How To section](https://docs.getleon.ai/how-to/) of the documentation.
-
-### Installation
-
-```sh
-# Clone the repository (stable branch)
-git clone -b master https://github.com/leon-ai/leon.git leon
-# OR download the latest release at: https://github.com/leon-ai/leon/releases/latest
-
-# Go to the project root
-cd leon
-
-# Install
-npm install
+- **Clone this repository:**
+```
+git clone https://github.com/WeazelDev/AITextGenerator.git
+cd AITextGenerator
+pip install -r requirements.txt
 ```
 
-### Usage
+- **Download the pretrained models:**
 
-```sh
-# Check the setup went well
-npm run check
+It contains the NER model we used as is, and our trained version of GPT2-Small.
 
-# Build
-npm run build
+1. Download the archive at: https://drive.google.com/open?id=1svTqyugLI36zaX6Fo6hr-Od4ATRxH2vf (~1.6 Go)
+2. Extract it directly into the project's root folder.
 
-# Run
-npm start
+- **Go into** ```webserver/running_directory/``` **and run** ```launch_allinone_backend.py``` **.**
 
-# Go to http://localhost:1337
-# Hooray! Leon is running
+This will run a local backend on default port 7777 (you don't need to open it as it is working on localhost). If you want to change this, change the NER or generation models or dissociate the backend servers and ports for master, generation and NER backends, change the values inside ```config.json```.
+
+- **Navigate to:** http://textgen.thomas-lamson.com/ **with your favorite browser.** (works best with Google Chrome)
+
+- **Check the tick saying** ```"Run on local server?"``` **at the top of the page.**
+
+Again, change the connection port on the frontend page if needed.
+
+*Please note that the first NER and generation orders will likely fail and result into a "Servers overloaded" error as heavy models are loading on the backend side. Just wait for a bit, type something in the editor to actualise it and it should work fine. If not, maybe you don't have enough computing power to stay under the frontend's timeout delays. You might want to grab your copy of the frontend's source code to modify it: https://github.com/WeazelDev/AITextGeneratorFront.*
+
+## For training
+
+If you want to train the model, adapt it to your own projects or even plug another model into our code general structure, feel free to do so! Here is how to get started for the original model however:
+
+- **Clone this repository:**
+```
+git clone https://github.com/WeazelDev/AITextGenerator.git
+cd AITextGenerator
+pip install -r requirements.txt
 ```
 
-### Docker Installation
+- **Download the data archive:** (if needed)
 
-```sh
-# Build
-npm run docker:build
+It contains all the input and output data extracted and generated by this project.
 
-# Run
-npm run docker:run
+1. Download the archive at: https://drive.google.com/open?id=19b_x5dsie21Z6ZW7R6vnvwN3IPaKPXMv (~250Mo)
+2. Extract it directly into the project's root folder.
 
-# Go to http://localhost:1337
-# Hooray! Leon is running
-```
+Refer to the data.py file to observe the framework we utilised to obtain this data. If you want to process new books or to re-run the code, you first need to populate the Gutenberg cache (long process). To do so, uncomment the first lines of the code in main.py. 
 
-## 📚 Documentation
+- **Download the pretrained models:**
 
-For full documentation, visit [docs.getleon.ai](https://docs.getleon.ai).
+It contains the NER model we used as is, and our trained version of GPT2-Small.
 
-## 🧭 Roadmap
+1. Download the archive at: https://drive.google.com/open?id=1svTqyugLI36zaX6Fo6hr-Od4ATRxH2vf (~1.6 Go)
+2. Extract it directly into the project's root folder.
 
-To know what is going on, follow [roadmap.getleon.ai](https://roadmap.getleon.ai).
+In order to make our experiments, we used the following script that can be found on project root 
+- **splitter.py**: to split the raw text file in paragraph and save them in json files 
+- **ner.py**: to perform entities recognition on the paragrap 
+- **summarization.py**: to summarize with differents summarizer the paragraph 
+- **finetuning.py** : to finetune GPT. We used the [fine-tuning script proposed by Huggingface](https://github.com/huggingface/transformers/blob/master/examples/run_language_modeling.py). We make a few changes to be able to load our custom torch dataset and correctly handle some specifity of our projects. 
+- **evaluation.py** : to generate text with a fine-tune GPT2 and compute our custom metrics on the generated paragraph 
 
-## ❤️ Contributing
+# Source code structure
 
-If you have an idea for improving Leon, do not hesitate.
-
-**Leon needs open source to live**, the more modules he has, the more skillful he becomes.
-
-## 📖 The Story Behind Leon
-
-You'll find a write-up on this [blog post](https://blog.getleon.ai/the-story-behind-leon/).
-
-## 🔔 Stay Tuned
-
-- [Newsletter](https://getleon.ai)
-- [Blog](https://blog.getleon.ai)
-- [GitHub issues](https://github.com/leon-ai/leon/issues)
-- [Twitter](https://twitter.com/louistiti_fr)
-- [#LeonAI](https://twitter.com/hashtag/LeonAI)
-
-## 👨 Author
-
-**Louis Grenard** ([@louistiti_fr](https://twitter.com/louistiti_fr))
-
-## 👍 Sponsor
-
-You can also contribute by [sponsoring Leon](https://sponsor.getleon.ai).
-
-Please note that I dedicate most of my free time to Leon.
-
-By sponsoring the project you make the project sustainable and faster to develop features.
-
-The focus is not only limited to the activity you see on GitHub but also a lot of thinking about the direction of the project. Which is naturally related to the overall design, architecture, vision, learning process and so on...
-
-## 📝 License
-[MIT License](https://github.com/leon-ai/leon/blob/develop/LICENSE.md)
-
-Copyright (c) 2019-present, Louis Grenard <louis.grenard@gmail.com>
-
-## Cheers!
-![Cheers!](https://github.githubassets.com/images/icons/emoji/unicode/1f379.png "Cheers!")
+- **json_generation** handles all the text preprocessing : from raw text and metadata (extracted from Gutenberg) to final json file containing the novel split by paragraph and related information : the list of entities inside the paragraph, size, summaries, etc 
+- **torch_loader** module is used to load and vectorize on the fly the data (preprocessed json file) so that it can be directly feed into a GPT2 model for fine-tuning
+- **model_training** contains the script to fine-tune the GPT2 model. It is simply an adaptation of huggingface/run_langage_modeling that allows its use on our custom dataset
+- **model_evaluation** module used to evaluate the output quality of our fine-tuned GPT2 model 
+- **model_use** module interface our GPT2 fine-tune model with the web_service backend 
+- **web_server** contains the back_end interface of our web service. The web service front-end has been pushed to a separate repo and can been found at : https://github.com/WeazelDev/AITextGeneratorFront
+- **third_party** folder contains several framework that has been cloned directly into our project. 
